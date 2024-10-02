@@ -8,8 +8,8 @@ public class Calculos extends Interaccion{
     Interaccion monedas = new Interaccion();
 
     @Override
-    public double getValorMoneda1() {
-        return super.getValorMoneda1();
+    public double getValorDolar() {
+        return super.getValorDolar();
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Calculos extends Interaccion{
         return super.getValorMoneda2();
     }
 
-    private double valorConvertido = getValorMoneda1() * getValorMoneda2();
+    private double valorConvertido = getValorDolar() * getValorMoneda2();
 
     public double getValorConvertido() {
         return valorConvertido;

@@ -2,6 +2,7 @@ package Interacción;
 
 public class Interaccion {
 
+    private int opcionUsusario;
     private String moneda1;
     private String moneda2;
     private String mensajeMenu = "" +
@@ -17,19 +18,23 @@ public class Interaccion {
             "7) Salir\n"+
             "Elija una de las opciones anteriores";
 
-    private double valorMoneda1 = 10;
-    private double valorMoneda2 = 2;
+    private double valorDolar;
+    private double valorMoneda2;
 
     // Todos los getters y Setters a utilizar:
     public String getMensajeMenu() {
         return mensajeMenu;
     }
 
-    public double getValorMoneda1() {
-        return valorMoneda1;
+    public double getValorDolar() {
+        return valorDolar;
     }
 
     public double getValorMoneda2() {
         return valorMoneda2;
+    }
+
+    public int getOpcionUsusario() {
+        return opcionUsusario;
     }
 }
