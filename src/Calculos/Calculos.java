@@ -22,4 +22,5 @@ public class Calculos extends Interaccion{
     public double getValorConvertido() {
         return valorConvertido;
     }
+
 }
