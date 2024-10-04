@@ -1,76 +1,102 @@
 import Calculos.Calculos;
 import Interacción.Interaccion;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Pincipal {
     public static void main(String[] args) {
-
         Scanner teclado = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("#.##");
+
         //Para obetener los elementos desde otras clases:
         Interaccion interaccion = new Interaccion();
         Calculos calculos = new Calculos();
         DatosDeLaApi datosDeLaApi = new DatosDeLaApi();
 
         // Nuevas Variables:
-        var opcionUsuario = interaccion.getOpcionUsusario();
 
 
 
-        while (opcionUsuario != 7) {
+        while (interaccion.getOpcionUsusario() != 7) {
             System.out.println(interaccion.getMensajeMenu());
-            opcionUsuario = teclado.nextInt();
-
-            switch (opcionUsuario) {
-
-                case 1: // Pasar de CLP a USD
-
-                    //System.out.println("Ingrese el monto: ");
-                    //opcionUsuario = teclado.nextInt();
+            interaccion.setOpcionUsusario(teclado.nextInt());
 
 
+            switch (interaccion.getOpcionUsusario()) {
+
+                case 1: // Pasar de USD a CLP
+                    System.out.println("Ingrese el monto: ");
                     datosDeLaApi.setMoneda("CLP");
 
-                    System.out.println("Nombre de la moneda: "+ datosDeLaApi.getMoneda());
-                    System.out.println("Moneda: "+ datosDeLaApi.getMoneda());
-                    System.out.println("Valor del cambio: "+ datosDeLaApi.getClpValue());
-                    calculos.getValorConvertido();
-                    System.out.println("El Cambio de peso Chileno a Dólar es de: " + calculos.getValorConvertido());
+                    interaccion.setValorMonto(teclado.nextDouble());
+                    calculos.setValorMonto(interaccion.getValorMonto());
+                    calculos.setValorDolar(datosDeLaApi.getClpValue());
+
+                    System.out.println("(USD A CLP)\n"+" El valor total de la conversion es de: $" + df.format(calculos.getDolaraPeso())+" pesos Chilenos"+"\n");
                     break;
 
-                case 2:// Pasar de USD a CLP
-
-                    datosDeLaApi.setMoneda("AUS");
-                    System.out.println("Nombre de la moneda: "+ datosDeLaApi.getMoneda());
-
+                case 2:// Pasar de CLP a USD
                     System.out.println("Ingrese el monto: ");
-                    opcionUsuario = teclado.nextInt();
+                    datosDeLaApi.setMoneda("CLP");
 
-                    calculos.getValorConvertido();
-                    System.out.println("El Cambio de Dólar a peso Chileno es de: " + calculos.getValorConvertido());
+                    interaccion.setValorMonto(teclado.nextDouble());
+                    calculos.setValorMonto(interaccion.getValorMonto());
+                    calculos.setValorDolar(datosDeLaApi.getClpValue());
+
+                    System.out.println("(CLP A USD)\n"+" El valor total de la conversion es de: USD$" + df.format(calculos.getPesoaDolar())+"\n");
                     break;
-                case 3:
-                    calculos.getValorConvertido();
-                    System.out.println("El Cambio de peso Chileno a Dólar es de: " + calculos.getValorConvertido());
+
+                case 3: // De USD a ARS
+                    System.out.println("Ingrese el monto: ");
+                    datosDeLaApi.setMoneda("ARS");
+
+                    interaccion.setValorMonto(teclado.nextDouble());
+                    calculos.setValorMonto(interaccion.getValorMonto());
+                    calculos.setValorDolar(datosDeLaApi.getClpValue());
+
+                    System.out.println("(USD A ARS)\n"+"El valor total de la conversion es de: $" + df.format(calculos.getDolaraPeso())+" pesos Argentinos"+"\n");
                     break;
-                case 4:
-                    calculos.getValorConvertido();
-                    System.out.println("El Cambio de peso Chileno a Dólar es de: " + calculos.getValorConvertido());
+
+                case 4: // Peso Argentino a Dólar:
+                    System.out.println("Ingrese el monto: ");
+                    datosDeLaApi.setMoneda("ARS");
+
+                    interaccion.setValorMonto(teclado.nextDouble());
+                    calculos.setValorMonto(interaccion.getValorMonto());
+                    calculos.setValorDolar(datosDeLaApi.getClpValue());
+
+                    System.out.println("(ARS A USD)\n"+" El valor total de la conversion es de: USD$" + df.format(calculos.getPesoaDolar())+"\n");
                     break;
-                case 5:
-                    calculos.getValorConvertido();
-                    System.out.println("El Cambio de peso Chileno a Dólar es de: " + calculos.getValorConvertido());
+
+                case 5: // De USD a BRL
+                    System.out.println("Ingrese el monto: ");
+                    datosDeLaApi.setMoneda("BRL");
+
+                    interaccion.setValorMonto(teclado.nextDouble());
+                    calculos.setValorMonto(interaccion.getValorMonto());
+                    calculos.setValorDolar(datosDeLaApi.getClpValue());
+
+                    System.out.println("(USD A BRL)\n"+"El valor total de la conversion es de: $" + df.format(calculos.getDolaraPeso())+" Reales Brasileños"+"\n");
                     break;
-                case 6:
-                    calculos.getValorConvertido();
-                    System.out.println("El Cambio de peso Chileno a Dólar es de: " + calculos.getValorConvertido());
+
+                case 6: // De Real Brasileño a Dólar:
+                    System.out.println("Ingrese el monto: ");
+                    datosDeLaApi.setMoneda("BRL");
+
+                    interaccion.setValorMonto(teclado.nextDouble());
+                    calculos.setValorMonto(interaccion.getValorMonto());
+                    calculos.setValorDolar(datosDeLaApi.getClpValue());
+
+                    System.out.println("(BRL A USD)\n"+" El valor total de la conversion es de: USD$" + df.format(calculos.getPesoaDolar())+"\n");
                     break;
-                case 7:
-                    calculos.getValorConvertido();
-                    System.out.println("Saliendo del programa.....");
+
+                case 7: // Salir.
+                    System.out.println("\n"+"Saliendo del programa.....");
                     break;
+
                 default:
-                    System.out.println("Está opción no es vailda, debes de elegir una de las anteriores");
+                    System.out.println("\n"+"Está opción no es vailda, debes de elegir una de las anteriores");
 
             }
         }
