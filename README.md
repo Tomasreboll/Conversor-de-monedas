@@ -1,4 +1,4 @@
 # FALTANTE POR HACER
 
-- Variable para almacenar el monto a convertir.
-- Realizar los cálculos según corresponda en cada caso.
+- Refactorizar codigo: eliminar sobrantes o extras.
+- Crear una funcion para los valores (Codigo repetido en los casos).
