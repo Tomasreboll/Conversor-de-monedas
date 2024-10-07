@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Pincipal {
+
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         DecimalFormat df = new DecimalFormat("#.##");
@@ -15,14 +16,9 @@ public class Pincipal {
         Calculos calculos = new Calculos();
         DatosDeLaApi datosDeLaApi = new DatosDeLaApi();
 
-        // Nuevas Variables:
-
-
-
         while (interaccion.getOpcionUsusario() != 7) {
             System.out.println(interaccion.getMensajeMenu());
             interaccion.setOpcionUsusario(teclado.nextInt());
-
 
             switch (interaccion.getOpcionUsusario()) {
 
@@ -39,9 +35,9 @@ public class Pincipal {
 
                 case 2:// Pasar de CLP a USD
                     System.out.println("Ingrese el monto: ");
+                    interaccion.setValorMonto(teclado.nextDouble());
                     datosDeLaApi.setMoneda("CLP");
 
-                    interaccion.setValorMonto(teclado.nextDouble());
                     calculos.setValorMonto(interaccion.getValorMonto());
                     calculos.setValorDolar(datosDeLaApi.getClpValue());
 
@@ -89,7 +85,7 @@ public class Pincipal {
                     calculos.setValorMonto(interaccion.getValorMonto());
                     calculos.setValorDolar(datosDeLaApi.getClpValue());
 
-                    System.out.println("(BRL A USD)\n"+" El valor total de la conversion es de: USD$" + df.format(calculos.getPesoaDolar())+"\n");
+                    System.out.println("("+datosDeLaApi.getMoneda()+" A USD)\n"+" El valor total de la conversion es de: USD$" + df.format(calculos.getPesoaDolar())+"\n");
                     break;
 
                 case 7: // Salir.
@@ -105,4 +101,3 @@ public class Pincipal {
 
     }
 }
-

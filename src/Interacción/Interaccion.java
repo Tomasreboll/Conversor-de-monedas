@@ -15,8 +15,6 @@ public class Interaccion {
             "6) Real Brasileño a Dólar\n"+
             "7) Salir\n"+
             "Elija una de las opciones anteriores";
-
-    private double valorDolar;
     private double valorMonto;
 
     // Todos los getters y Setters a utilizar:
@@ -36,14 +34,6 @@ public class Interaccion {
 
     public void setMensajeMenu(String mensajeMenu) {
         this.mensajeMenu = mensajeMenu;
-    }
-
-    public double getValorDolar() {
-        return valorDolar;
-    }
-
-    public void setValorDolar(double valorDolar) {
-        this.valorDolar = valorDolar;
     }
 
     public double getValorMonto() {
